@@ -171,6 +171,18 @@ function initCopyButtons() {
       }
     });
   }
+
+  const btnTmap = document.getElementById('btn-tmap-route');
+  if (btnTmap) {
+    btnTmap.addEventListener('click', (e) => {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (!isMobile) {
+        e.preventDefault();
+        showToast('티맵 길안내는 모바일 앱 전용입니다. 네이버 지도로 이동합니다.');
+        window.open('https://naver.me/GWe2U1UG', '_blank');
+      }
+    });
+  }
 }
 
 function copyToClipboard(text, successMsg) {

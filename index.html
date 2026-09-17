@@ -289,13 +289,15 @@
           </svg>
           네이버 지도
         </a>
-        <a href="https://map.kakao.com/link/search/팔복 판교점" target="_blank" rel="noopener noreferrer" class="nav-btn kakao">
+        <!-- 카카오맵: 플레이스 고유번호(409216346)로 직행하여 누룽지탕 혼선 차단 -->
+        <a href="https://place.map.kakao.com/409216346" target="_blank" rel="noopener noreferrer" class="nav-btn kakao">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 3c-5.52 0-10 3.58-10 8 0 2.82 1.84 5.3 4.67 6.69-.17.61-.63 2.21-.72 2.56-.12.44.16.44.34.32.14-.09 2.24-1.52 3.14-2.14.83.12 1.68.17 2.57.17 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
           </svg>
           카카오맵
         </a>
-        <a href="tmap://search?name=팔복 판교점" target="_blank" rel="noopener noreferrer" class="nav-btn tmap">
+        <!-- 티맵: 좌표(goalx, goaly) 직행 스킴으로 누룽지탕 검색 결과 차단 -->
+        <a id="btn-tmap-route" href="tmap://route?goalname=%ED%8C%94%EB%B3%B5%20%ED%8C%90%EA%B5%90%EC%A0%90&goalx=127.106817&goaly=37.402706" class="nav-btn tmap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
           </svg>
@@ -305,6 +307,22 @@
 
       <!-- Detailed Parking & Transport Information -->
       <div class="transport-card-list">
+        <!-- 매장 혼선 방지 안내 카드 -->
+        <div class="transport-card" style="border-left: 3px solid var(--color-gold);">
+          <div class="transport-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            </svg>
+          </div>
+          <div class="transport-info">
+            <h4>식당 안내 유의사항</h4>
+            <p>
+              • 본 모임 장소는 <strong>판교엠타워 1층 중식당 '팔복'</strong>입니다.<br>
+              • <span style="color: #b56c00; font-weight: 600;">※ '팔복누룽지탕'(타 매장)과 혼동되지 않도록 '판교엠타워 1층 팔복(중식당)'으로 확인 부탁드립니다.</span>
+            </p>
+          </div>
+        </div>
+
         <!-- 주차 안내 -->
         <div class="transport-card">
           <div class="transport-icon-box">
