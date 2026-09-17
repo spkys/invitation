@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Target Date: 2026-09-27 12:00:00 KST
 const TARGET_DATE = new Date('2026-09-27T12:00:00+09:00').getTime();
-const EVENT_TITLE = "장모님 생신 축하 식사 모임";
+const EVENT_TITLE = "최승숙 여사님 생신 축하 식사 모임";
 const EVENT_LOCATION = "경기 성남시 분당구 판교역로241번길 22 판교엠타워 1층 팔복 (삼평동 694)";
-const EVENT_DESCRIPTION = "어머니의 뜻깊은 생신을 축하드리는 가족·친지 식사 모임입니다.\\n장소: 판교 팔복 (판교엠타워 1층)\\n주차: 판교엠타워 지상 2~5층 (3시간 무료 주차 지원)";
+const EVENT_DESCRIPTION = "어머니 최승숙 여사님의 뜻깊은 생신을 축하드리는 가족·친지 식사 모임입니다.\\n장소: 판교 팔복 (판교엠타워 1층)\\n주차: 판교엠타워 지상 2~5층 (3시간 무료 주차 지원)";
 
 /**
  * 1. Countdown Timer
