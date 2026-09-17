@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountdown();
   initCalendarActions();
   initCopyButtons();
-  initGuestbook();
   initScrollAnimations();
 });
 
@@ -228,120 +227,7 @@ function showToast(message) {
 }
 
 /**
- * 4. Guestbook / Warm Wishes (LocalStorage)
- */
-const DEFAULT_WISHES = [
-  {
-    name: "가족 일동",
-    time: "2026.09",
-    text: "어머니, 항상 건강하시고 행복하세요! 생신을 진심으로 축하드립니다."
-  },
-  {
-    name: "축하하는 마음",
-    time: "2026.09",
-    text: "뜻깊은 자리에 함께할 수 있어 기쁩니다. 맛있는 식사 나누며 좋은 시간 보내요."
-  }
-];
-
-function initGuestbook() {
-  const form = document.getElementById('form-guestbook');
-  const nameInput = document.getElementById('guestbook-name');
-  const messageInput = document.getElementById('guestbook-msg');
-  const listEl = document.getElementById('guestbook-list');
-
-  if (!form || !listEl) return;
-
-  function loadWishes() {
-    let wishes = [];
-    try {
-      const stored = localStorage.getItem('birthday_wishes');
-      if (stored) {
-        wishes = JSON.parse(stored);
-      } else {
-        wishes = DEFAULT_WISHES;
-      }
-    } catch (e) {
-      wishes = DEFAULT_WISHES;
-    }
-    return wishes;
-  }
-
-  function renderWishes(wishes) {
-    listEl.innerHTML = '';
-    wishes.forEach(wish => {
-      const card = document.createElement('div');
-      card.className = 'wish-card';
-
-      const header = document.createElement('div');
-      header.className = 'wish-header';
-
-      const author = document.createElement('span');
-      author.className = 'wish-author';
-      author.textContent = wish.name;
-
-      const time = document.createElement('span');
-      time.className = 'wish-time';
-      time.textContent = wish.time;
-
-      header.appendChild(author);
-      header.appendChild(time);
-
-      const content = document.createElement('p');
-      content.className = 'wish-text';
-      content.textContent = wish.text;
-
-      card.appendChild(header);
-      card.appendChild(content);
-      listEl.appendChild(card);
-    });
-  }
-
-  const wishes = loadWishes();
-  renderWishes(wishes);
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = nameInput.value.trim();
-    const msg = messageInput.value.trim();
-
-    if (!name) {
-      showToast('성함을 입력해 주세요.');
-      nameInput.focus();
-      return;
-    }
-    if (!msg) {
-      showToast('축하 메시지를 입력해 주세요.');
-      messageInput.focus();
-      return;
-    }
-
-    const now = new Date();
-    const dateStr = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
-
-    const newWish = {
-      name: name,
-      time: dateStr,
-      text: msg
-    };
-
-    const currentWishes = loadWishes();
-    currentWishes.unshift(newWish);
-
-    try {
-      localStorage.setItem('birthday_wishes', JSON.stringify(currentWishes));
-    } catch (err) {
-      console.warn('LocalStorage save failed:', err);
-    }
-
-    renderWishes(currentWishes);
-    nameInput.value = '';
-    messageInput.value = '';
-    showToast('따뜻한 축하 메시지가 등록되었습니다.');
-  });
-}
-
-/**
- * 5. Scroll Reveal Animations
+ * 4. Scroll Reveal Animations
  */
 function initScrollAnimations() {
   const elements = document.querySelectorAll('.reveal-on-scroll');
